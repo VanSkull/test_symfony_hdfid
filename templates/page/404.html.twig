@@ -1,0 +1,16 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Page introuvable{% endblock %}
+
+{% block body %}
+    <div class="page-not-found-main-content">
+        <div class="bloc-content">
+            <span class="error-404">404</span>
+            <h1>Il semblerait que vous soyez perdu dans notre application !<br>Essayez de revenir en lieu sûr.</h1>
+            <div class="btn-return-home">
+                <a href="{{ path('app_main') }}">Revenir à l'accueil</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

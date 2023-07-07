@@ -1,0 +1,163 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <div id="entete-index">
+        <div class="bloc-content">
+            <div class="bloc-text">
+                <h1>
+                    Bienvenue sur MoviesDatabase<br>
+                    <span>La plus grande librairie de films au monde</span>
+                </h1>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab perspiciatis consectetur cumque earum a corporis optio provident. Maiores animi expedita velit inventore voluptate. Ex fuga porro unde. Rerum, minima iusto.</p>
+                <p>
+                    <a href="#" class="btn-linear">Commencer à regarder</a>
+                </p>
+            </div>
+            <div class="bloc-image">
+                <img src="{{ asset('images/image-entete-index.png') }}" alt="Image entête index">
+            </div>
+        </div>
+    </div>
+
+    <div id="bloc-presentation" class="section">
+        <div class="container">
+            <div class="bloc-content">
+                <h2>Une bibliothèque <span>immense</span></h2>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde consectetur ab accusamus, maiores neque sit aliquam soluta atque aliquid modi eos, cumque excepturi eligendi velit, enim corrupti harum animi in? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis consequatur error blanditiis. Porro reprehenderit fugiat maxime veniam error animi a quos accusantium obcaecati accusamus, consectetur fuga! Debitis, in facilis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores perferendis eveniet sapiente consequuntur totam aliquid non quae, libero reiciendis inventore aperiam expedita corrupti ipsa autem, aut similique, molestias aspernatur quidem?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis consequatur error blanditiis. Porro reprehenderit fugiat maxime veniam error animi a quos accusantium obcaecati accusamus, consectetur fuga! Debitis, in facilis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores perferendis eveniet sapiente consequuntur totam aliquid non quae, libero reiciendis inventore aperiam expedita corrupti ipsa autem, aut similique, molestias aspernatur quidem?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis consequatur error blanditiis. Porro reprehenderit fugiat maxime veniam error animi a quos accusantium obcaecati accusamus, consectetur fuga! Debitis, in facilis!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="bloc-categories" class="section">
+        <div class="container">
+            <div class="bloc-content">
+                <h2>Tous nos <span>genres</span> de films</h2>
+
+                <div class="grid-categories">
+                    {% for categorie in categories.results %}
+                        {% if categorie != null %}
+                        <div class="single-categorie">
+                            <strong>{{ categorie }}</strong>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bloc-last-movies" class="section">
+        <div class="container">
+            <div class="bloc-content">
+                <h2>Nos toutes <span>dernières sorties</span></h2>
+                <p class="sub-title"><a href="/movies">Voir tous les films</a></p>
+
+                <div class="grid-last-movies">
+                    {% for categorie in categories.results %}
+                        {% if categorie != null %}
+                        <div class="single-movie">
+                            <div class="single-movie__content">
+                                <div class="movie-img">
+                                    <img src="{{ asset('images/affiche.jpg') }}" alt="Affiche film">
+                                </div>
+                                <div class="movie-text">
+                                    <div class="title-movie">{{ categorie }}</div>
+                                    <div class="year-movie">2016</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bloc-souscriptions" class="section">
+        <div class="container">
+            <div class="bloc-content">
+                <h2>Souscrivez un abonnement<br>pour un accès <span>illimité</span></h2>
+
+                <div class="grid-souscriptions">
+                    <div class="single-plan">
+                        <div class="single-plan__content">
+                            <div class="icon">
+                                <img src="{{ asset('images/rank-initie.png') }}" alt="Icon Initié">
+                            </div>
+                            <div class="title">Initié</div>
+                            <div class="price">2.99&nbsp;€<sub>/ mois</sub></div>
+                            <div class="description">
+                                <ul>
+                                    <li>1 compte</li>
+                                    <li>Accès illimité à tous nos films</li>
+                                    <li>Partage d'avis</li>
+                                </ul>
+                            </div>
+                            <div class="link-button">
+                                <a href="#">S'abonner</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-plan">
+                        <div class="single-plan__content">
+                            <div class="icon">
+                                <img src="{{ asset('images/rank-grand-fan.png') }}" alt="Icon Grand fan">
+                            </div>
+                            <div class="title">Grand fan</div>
+                            <div class="price">9.99&nbsp;€<sub>/ mois</sub></div>
+                            <div class="description">
+                                <ul>
+                                    <li>4 comptes</li>
+                                    <li>Accès illimité à tous nos films</li>
+                                    <li>Partage d'avis</li>
+                                    <li>Participation aux concours</li>
+                                    <li>Anecdotes à propos des films</li>
+                                    <li>Accès en avant-première aux prochaines sorties</li>
+                                </ul>
+                            </div>
+                            <div class="link-button">
+                                <a href="#">S'abonner</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-plan">
+                        <div class="single-plan__content">
+                            <div class="icon">
+                                <img src="{{ asset('images/rank-adepte.png') }}" alt="Icon Adepte">
+                            </div>
+                            <div class="title">Adepte</div>
+                            <div class="price">4.99&nbsp;€<sub>/ mois</sub></div>
+                            <div class="description">
+                                <ul>
+                                    <li>2 comptes</li>
+                                    <li>Accès illimité à tous nos films</li>
+                                    <li>Partage d'avis</li>
+                                    <li>Participation aux concours</li>
+                                    <li>Anecdotes à propos des films</li>
+                                </ul>
+                            </div>
+                            <div class="link-button">
+                                <a href="#">S'abonner</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bloc-last-chance" class="section">
+        <div class="container">
+            <div class="bloc-content">
+                <h2>Alors, prêt pour une <span>aventure</span> ?</h2>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ullam, repudiandae officiis error debitis quae mollitia quisquam, molestiae eos modi veritatis blanditiis obcaecati itaque dolor est aperiam, doloribus sed dolore.</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Erreur survenue{% endblock %}
+
+{% block body %}
+    <div class="error-main-content">
+        <div class="bloc-content">
+            <span class="alert-error">Alerte erreur détecté !!!</span>
+            <h1>Oups... Pardon, il semblerait que vous ayez rencontré une erreur !<br>Merci de contacter le support si elle ricidive.</h1>
+            <div class="btn-return-home">
+                <a href="{{ path('app_main') }}">Revenir à l'accueil</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bienvenue sur l'API de MoviesDatabase{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/png">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <a href="{{ path('app_main') }}">
+                MoviesDatabase
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_main') }}">Accueil</a></li>
+                <li><a href="{{ path('app_movies') }}">Films</a></li>
+                <li><a href="{{ path('app_actors') }}">Acteurs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block body %}
+        
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© Copyright - Valentin VANHAECKE - France 2023</p>
+    </footer>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        <script src="{{ asset('js/script.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

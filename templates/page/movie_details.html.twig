@@ -1,0 +1,58 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ movie.titleText.text }}{% endblock %}
+
+{% block body %}
+    {# {{ dump(movie) }} #}
+    <div class="single-movie-main-content">
+        <div class="container">
+            <h1>Détail du film :</h1>
+            <br>
+            <br>
+            <br>
+            <div class="bloc-content">
+                <div class="movie-img">
+                    {% if movie.primaryImage != null %}
+                        <img src="{{ movie.primaryImage.url }}" alt="{{ movie.primaryImage.caption.plainText }}">
+                    {% else %}
+                        <img src="{{ asset('images/placeholder.png') }}" alt="Affiche de {{ movie.titleText.text }}">
+                    {% endif %}
+                </div>
+                <div class="movie-text">
+                    <div class="title-movie">{{ movie.titleText.text }}</div>
+                    <div>
+                        <div class="year-movie">{{ movie.releaseYear.year }}</div>
+                        {% if movie.runtime is not null %}
+                        -
+                        <div class="duration-movie">
+                            {% set nombre = movie.runtime.seconds %}
+                            {% set minutes = nombre // 60 %}
+                            {{ minutes }}min
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% if movie.genres is not null %}
+                    <div class="genres-movie">
+                        {% for genreMovie in movie.genres.genres %}
+                        <span>{{ genreMovie.text }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% if movie.ratingsSummary.aggregateRating is not null %}
+                        <div class="note-movie">{{ movie.ratingsSummary.aggregateRating }} / 10 <span>({{ movie.ratingsSummary.voteCount }} vote{% if movie.ratingsSummary.voteCount > 1 %}s{% endif %})</span></div>
+                    {% endif %}
+
+                    {% if movie.plot is not null %}
+                    <div class="synopsis-movie">
+                        {{ movie.plot.plotText.plainText }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="btn-return-movies">
+                <a href="{{ path('app_movies') }}">Retour aux films</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Film introuvable{% endblock %}
+
+{% block body %}
+    <div class="movie-not-found-main-content">
+        <div class="bloc-content">
+            <span class="question-mark">?</span>
+            <h1>Il semblerait que le film que vous essayez de trouver, n'existe pas ou est introuvable !</h1>
+            <div class="btn-return-movies">
+                <a href="{{ path('app_movies') }}">Retour aux films</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

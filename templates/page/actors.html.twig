@@ -1,0 +1,79 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <div id="entete-actors">
+        <div class="bloc-content">
+            <div class="bloc-text">
+                <h1>
+                    Des acteurs légendaires<br>
+                    <span>pour vous servir</span>
+                </h1>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab perspiciatis consectetur cumque earum a corporis optio provident. Maiores animi expedita velit inventore voluptate. Ex fuga porro unde. Rerum, minima iusto.</p>
+            </div>
+            <div class="bloc-image">
+                <img src="{{ asset('images/image-entete-index.png') }}" alt="Image entête index">
+            </div>
+        </div>
+    </div>
+
+    <div id="bloc-listing-actors" class="section">
+        <div class="container">
+            <div class="bloc-content">
+                <div class="filter-bar">
+                    <div class="single-filter">
+                        <label for="name-actor">Nom</label>
+                        <input type="text" name="name-actor">
+                    </div>
+                    <div class="button-submit-filters">
+                        <a id="submit-filters" onclick="filterActors();">
+                            Filtrer les acteurs
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid-actors">
+                    {% for actor in actors.results %}
+                    <div class="single-actor">
+                        <div class="single-actor__content">
+                            <div class="actor-img">
+                                <img src="{{ asset('images/placeholder.png') }}" alt="Affiche de {{ actor.primaryName }}">
+                            </div>
+                            <div class="actor-text">
+                                <div class="name-actor">{{ actor.primaryName }}</div>
+                                <div class="job-actor">{{ actor.primaryProfession|replace({',': ', '}) }}</div>
+                                <div class="date-actor">
+                                    <span class="dob-actor">Né en {{ actor.birthYear }}</span>
+                                    {% if actor.deathYear != null %}
+                                        | <span class="dod-actor">Mort en {{ actor.deathYear }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="movies-actor">
+                                    Connu pour avoir joué dans :<br>
+                                    {% set foo = [] %}
+                                    {% for movieActor in actor.knownForMovies %}
+                                        {% set foo = foo|merge([movieActor.results.titleText.text]) %}
+                                    {% endfor %}
+                                    <span>{{ foo|join(', ') }}</span>
+                                    {# {{ actor.knownForTitles|replace({',': ', '}) }} #}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {# Affiche les liens de navigation #}
+                <div class="pagination">
+                    {% if actors.page > 1 %}
+                        {# <a href="{{ path('app_actors', {'page': (actors.page - 1)}) }}">Page précédente</a> #}
+                        <a href="javascript: history.go(-1)">Page précédente</a>
+                    {% endif %}
+                    {# <a href="{{ path('app_actors', {'page': (actors.page + 1)}) }}">Page suivante</a> #}
+                    <a href="{{ actors.next }}">Page suivante</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
